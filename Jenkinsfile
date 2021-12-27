@@ -3,7 +3,7 @@ pipeline {
 	agent any
 	environment {
 		NEW_VERSION = '1.3.0'
-		SERVER_CREDENTIALS = credentials('')
+		SERVER_CREDENTIALS = credentials('tagost')
 	}
 	tools{
 		ant 'ant'
@@ -42,7 +42,7 @@ pipeline {
 				echo 'deploying the aplication...'
 				echo "deploying version ${params.VERSION}"
 				withCredentials([
-					usernamePassword(credentials: 'server-credentials', usernameVariable: USER, passwordVariable: PWD)
+					usernamePassword(credentials: 'tagost', usernameVariable: USER, passwordVariable: PWD)
 				]){
 					sh "some script ${USER} ${PWD}"
 				}
