@@ -51,13 +51,13 @@ pipeline {
 	}
 	post {
 		always {
-			//
+			echo 'Post always printing'
 		}
 		success {
-			
+			echo 'Post success printing'
 		}
 		failure {
-		
+			echo 'Post failure printing'
 		}
 	}
 }
