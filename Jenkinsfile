@@ -42,7 +42,7 @@ pipeline {
 				echo 'deploying the aplication...'
 				echo "deploying version ${params.VERSION}"
 				withCredentials([
-					usernamePassword(credentials: 'tagost', usernameVariable: USER, passwordVariable: PWD)
+					usernamePassword(credentialsId: 'tagost', usernameVariable: 'USER', passwordVariable: 'PWD')
 				]){
 					echo "some script ${USER} ${PWD}"
 				}
