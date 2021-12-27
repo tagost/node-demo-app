@@ -14,6 +14,13 @@ pipeline {
 		booleanParam(name: 'executeTests', defaultValue: true, description: '')
 	}
 	stages {
+		stage ("init"){
+			steps {
+				script {
+					gv = load "script.groovy"
+				}
+			}
+		}
 		stage ("build"){
 			when {
 				expression {
@@ -21,8 +28,9 @@ pipeline {
 				}
 			}
 			steps {
-				echo 'building the aplication...'
-				echo "building new version ${NEW_VERSION}"
+				script{
+					gv.buildApp()
+				}
 			}
 		}
 		
@@ -33,18 +41,16 @@ pipeline {
 				}
 			}
 			steps {
-				echo 'testing the aplication...'
+				gv.testApp()
 			}
 		}
 		
 		stage ("deploy"){
 			steps {
-				echo 'deploying the aplication...'
-				echo "deploying version ${params.VERSION}"
 				withCredentials([
 					usernamePassword(credentialsId: 'tagost', usernameVariable: 'USER', passwordVariable: 'PWD')
 				]){
-					echo "Credentials username: $USER password: $PWD"
+					gv.deployApp()
 				}
 			}
 		}
