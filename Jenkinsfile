@@ -6,7 +6,7 @@ pipeline {
 		SERVER_CREDENTIALS = credentials('')
 	}
 	tools{
-		maven 'maven'
+		ant 'ant'
 	}
 	parameters {
 		string (name: 'VERSION', defaultValue: '', description: 'version to deploy on prod')
