@@ -44,7 +44,7 @@ pipeline {
 				withCredentials([
 					usernamePassword(credentialsId: 'tagost', usernameVariable: 'USER', passwordVariable: 'PWD')
 				]){
-					echo "some script "
+					echo "some script $USER"
 				}
 			}
 		}
