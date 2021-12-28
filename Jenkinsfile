@@ -41,7 +41,9 @@ pipeline {
 				}
 			}
 			steps {
-				gv.testApp()
+				script{
+					gv.testApp()
+				}
 			}
 		}
 		
@@ -50,7 +52,9 @@ pipeline {
 				withCredentials([
 					usernamePassword(credentialsId: 'tagost', usernameVariable: 'USER', passwordVariable: 'PWD')
 				]){
-					gv.deployApp()
+					script{
+						gv.deployApp()
+					}
 				}
 			}
 		}
