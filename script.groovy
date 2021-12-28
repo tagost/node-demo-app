@@ -7,7 +7,7 @@ def testApp(){
 }
 
 def deployApp(){
-	echo "deploying version ${params.VERSION}"
+	echo "deploying TAG ${params.TAG}"
 	echo 'Deploy the aplication...'
 	echo "Credentials username: $USER password: $PWD"
 }
