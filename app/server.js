@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 app.get('/app1', function (req, res) {
+  console.log('Host:', req.headers.host);
   res.send('Hello World! OKD4');
 });
 app.listen(3000, function () {
